@@ -190,11 +190,6 @@ int gi 1
 no ip access-group NOSCHOOL in
 end
 ----------------------------
-Your COMPANY HAS VERY LOW INTERNET SPEED, BECAUSE OF TORRENTS:
-www.thepiratebay.org
-www.limetorrents.com
-www.yts.mx
-
 config t
 NO ip access-list standard NOTORRENT
 ip access-list standard NOTORRENT
