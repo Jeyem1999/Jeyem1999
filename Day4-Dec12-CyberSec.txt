@@ -56,7 +56,7 @@ no shut
 ip add 192.168.103.11 255.255.255.0
 
 
-ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
+##ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
 
 config t
 NO ip access-list standard NOPORNNOFAP
@@ -72,13 +72,13 @@ Permit Any
 Int Gi 1
  ip access-group NOPORNNOFAP in
  end
+##to unblock it
 conf t
 int gi 1
 no ip access-group NOPORNNOFAP in
 end
 
-
-Alternative: Use standard ACL 1-99
+##Alternative: Use standard ACL 1-99
 conf t
 no access-list 69
 access-list 69 DENY 66.254.0.0 0.0.255.255
@@ -92,20 +92,19 @@ access-list 69 permit any
 Int gi 1
 ip access-group 69 in
 end
-Gobyerno: Allow all Pornsitesfor freedom of expression!
+##Gobyerno: Allow all Pornsitesfor freedom of expression!
 conf t
 int gi 1
 no ip access-group 69 in
 end
 
+##Task1.2: block admu.edu.ph, dlsu.edu.ph, ccp.edu.ph, ue.edu.ph
 
-Task1.2: block admu.edu.ph, dlsu.edu.ph, ccp.edu.ph, ue.edu.ph
-
-ping www.dlsu.edu.ph 172.67.14.0
-ping www.ccp.edu.ph 50.6.160.0
-ping www.feu.edu.ph 184.168.125.0
-ping www.ue.edu.ph 155.137.92.0
-ping www.tip.edu.ph 104.22.2.0
+#ping www.dlsu.edu.ph 172.67.14.0
+#ping www.ccp.edu.ph 50.6.160.0
+#ping www.feu.edu.ph 184.168.125.0
+#ping www.ue.edu.ph 155.137.92.0
+#ping www.tip.edu.ph 104.22.2.0
 
 config t
 NO ip access-list standard NOSCHOOL
