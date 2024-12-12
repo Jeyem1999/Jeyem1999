@@ -59,8 +59,8 @@ ip add 192.168.103.11 255.255.255.0
 ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
 
 config t
-NO ip access-list standard NOPORN1
-ip access-list standard NOPORN1
+NO ip access-list standard NOPORNNOFAP
+ip access-list standard NOPORNNOFAP
 DENY 66.254.0.0 0.0.255.255
 DENY 104.21.0.0 0.0.255.255
 DENY 68.235.0.0 0.0.255.255
@@ -70,14 +70,85 @@ DENY 208.77.0.0 0.0.255.255
 DENY 172.67.0.0 0.0.255.255
 Permit Any
 Int Gi 1
- ip access-group NOPORN1 in
+ ip access-group NOPORNNOFAP in
  end
+conf t
+int gi 1
+no ip access-group NOPORNNOFAP in
+end
+
+
+Alternative: Use standard ACL 1-99
+conf t
+no access-list 69
+access-list 69 DENY 66.254.0.0 0.0.255.255
+access-list 69 DENY 104.21.0.0 0.0.255.255
+access-list 69 DENY 68.235.0.0 0.0.255.255
+access-list 69 DENY 104.17.0.0 0.0.255.255
+access-list 69 DENY 88.208.0.0 0.0.255.255
+access-list 69 DENY 208.77.0.0 0.0.255.255
+access-list 69 DENY 172.67.0.0 0.0.255.255
+access-list 69 permit any
+Int gi 1
+ip access-group 69 in
+end
+Gobyerno: Allow all Pornsitesfor freedom of expression!
+conf t
+int gi 1
+no ip access-group 69 in
+end
+
+
 Task1.2: block admu.edu.ph, dlsu.edu.ph, ccp.edu.ph, ue.edu.ph
 
 ping www.dlsu.edu.ph 172.67.14.0
 ping www.ccp.edu.ph 50.6.160.0
 ping www.feu.edu.ph 184.168.125.0
-ping  www.ue.edu.ph 155.137.92.0
+ping www.ue.edu.ph 155.137.92.0
+ping www.tip.edu.ph 104.22.2.0
+
+config t
+NO ip access-list standard NOSCHOOL
+ip access-list standard NOSCHOOL
+DENY 172.67.14.0 0.0.255.255
+DENY 50.6.160.0 0.0.255.255
+DENY 184.168.125.0 0.0.255.255
+DENY 155.137.92.0 0.0.255.255
+DENY 104.22.2.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOSCHOOL in
+ end
+conf t
+int gi 1
+no ip access-group NOSCHOOL in
+end
+----------------------------
+Your COMPANY HAS VERY LOW INTERNET SPEED, BECAUSE OF TORRENTS:
+www.thepiratebay.org
+www.limetorrents.com
+www.yts.mx
+
+config t
+NO ip access-list standard NOTORRENT
+ip access-list standard NOTORRENT
+DENY 162.159.137.0 0.0.255.255
+DENY 104.31.16.0 0.0.255.255
+DENY 104.21.96.0 0.0.255.255
+DENY 45.12.1.0 0.0.255.255
+DENY 104.21.96.0 0.0.255.255
+DENY 13.248.169.0 0.0.255.255
+DENY 172.67.173.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOTORRENT in
+ end
+##to unblock again
+conf t
+int gi 1
+no ip access-group NOTORRENT in
+end
+
 
 TASK2: USE STANDARD ACCESS-LIST TO BLOCK OTHER CONTRIES/CLASSMATE:
 config t
